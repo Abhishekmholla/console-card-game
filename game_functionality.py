@@ -1,3 +1,6 @@
+from game_rules import game_rules
+
+
 class GameFunctionality():
 
     @staticmethod
@@ -30,4 +33,20 @@ class GameFunctionality():
         """
         print("Here is your set of cards mate!!!")
         print(",".join(player_cards))
+    
+    @staticmethod
+    def print_outcome_of_game(self,player_cards, robot_cards, selected_suit, card_values, is_game_started):
+        game_rule = game_rules()
+        game_result = game_rule.check_result(player_cards, robot_cards, selected_suit, card_values)
         
+        if is_game_started:
+            if game_result.get('player_won'):
+                print("\n\033[1mYou are leading mate!!! Keep picking....\033[0m")
+            else:
+                print("\n\033[1mYou are trailing mate!!!\033[0m")
+        else:            
+            if game_result.get('player_won'):
+                print("\n\033[1mYippee!!! Congratulations you won.......\033[0m")
+            else:
+                print("\n\033[1mHard luck mate.....you lost the game\033[0m")
+            
