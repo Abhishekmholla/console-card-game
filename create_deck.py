@@ -1,6 +1,6 @@
 class CreateDeck():
     
-    def __init__(self, card_deck, card_values, selected_suit) -> None:
+    def __init__(self, card_values, selected_suit) -> None:
         """Creates a deck using values and suit
 
         Parameters:
@@ -8,9 +8,10 @@ class CreateDeck():
         :param card_values: Dictionary of card values
         :param card_deck: List of cards in the deck
         """
-        self.card_deck = card_deck
+        self.card_deck = list()
         self.card_values = card_values
         self.selected_suit = selected_suit
+        self.create_deck()
     
     def create_deck(self):
         """
@@ -20,5 +21,5 @@ class CreateDeck():
         for value in self.card_values:
             for suit_value in self.selected_suit:
                 self.card_deck.append(value + suit_value)
-        
-        return self.card_deck
+    
+        # return card_deck
