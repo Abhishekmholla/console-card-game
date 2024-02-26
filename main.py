@@ -1,3 +1,8 @@
+from card_functionality import CardFunctionality
+from create_deck import CreateDeck
+from game_functionality import GameFunctionality
+
+
 def play_game():
     """
     This function manages the entire workflow of the game
@@ -20,7 +25,7 @@ def play_game():
           "Welcome to Monash-Card Game")
     while len(player_cards) <= 6:
 
-        get_game_menu()
+        GameFunctionality.get_game_menu()
 
         if not is_game_started:
             print(f"Here are the suits you can choose from: \n"
@@ -102,8 +107,10 @@ def play_game():
             print("\n\033[1mTHE GAME HAS BEGUN!!\033[0m\n"
                   "\nGenerating your deck......\n")
             
-            create_deck(deck, values, selected_suit)
-            shuffle_deck(deck, selected_suit)
+            deck = CreateDeck(values, selected_suit) 
+
+            card_functions = CardFunctionality()
+            card_functions.shuffle_deck(deck.card_deck, selected_suit)
             continue
 
         elif is_game_started and int(player_options[0]) == 2:
@@ -114,7 +121,7 @@ def play_game():
                 print(f"The input provided {player_options[1]} is invalid!!!")
                 continue
 
-            cards = pick_card(deck)
+            cards = card_functions.pick_card(deck.card_deck)
             
             print(f"\nThis is your {len(player_cards) + 1} move\n")
             print(f"You picked {cards.get('player_card')} card")
@@ -133,7 +140,7 @@ def play_game():
                 print(f"The input provided {player_options[1]} is invalid!!!")
                 continue
 
-            shuffle_deck(deck, selected_suit)
+            card_functions.shuffle_deck(deck, selected_suit)
 
         elif is_game_started and int(player_options[0]) == 4:
 
@@ -148,7 +155,7 @@ def play_game():
                 print("You need to pick few cards to show")
                 continue
 
-            show_card(player_cards)
+            GameFunctionality.show_card(player_cards)
 
         elif is_game_started and int(player_options[0]) == 5:
 
@@ -162,7 +169,7 @@ def play_game():
                 print("Please pick cards before checking result")
                 continue
 
-            print_outcome_of_game(player_cards, robot_cards, 
+            GameFunctionality.print_outcome_of_game(player_cards, robot_cards, 
                                   selected_suit, values,is_game_started)
 
         elif int(player_options[0]) == 6:
@@ -178,9 +185,11 @@ def play_game():
 
     if len(player_cards) == 6:
         print("You have exhausted your picks.Evaluating the result.....")
-        show_card(player_cards)
-        print_outcome_of_game(player_cards, robot_cards, selected_suit, values,is_game_started)
+        GameFunctionality.show_card(player_cards)
+        GameFunctionality.print_outcome_of_game(player_cards, robot_cards, selected_suit, values,is_game_started)
         print("Thanks for playing this game.\n")
 
     if int(player_options[0]) != 6:
         play_game()
+
+play_game()

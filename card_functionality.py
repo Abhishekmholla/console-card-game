@@ -18,10 +18,12 @@ class CardFunctionality():
         Doesn't return anything
         """
         print('\nShuffling deck....')
+        print("Let's have a look at our deck before shuffling!" )
         # Randomly shuffling the entire deck
+        print(card_deck)
         random.shuffle(card_deck)
         self.__move_deck_item(card_deck, selected_suit)
-        print('\nHere is your deck....\n')
+        print('\nHere is your deck after shuffling!\n')
         print(card_deck)
         
     def pick_card(self,card_deck):
@@ -55,7 +57,7 @@ class CardFunctionality():
 
         return self.cards
     
-    def __move_deck_item(card_deck, selected_suit):
+    def __move_deck_item(self,card_deck, selected_suit):
         # The items to be replaced are collected in a dictionary along 
         # with the position at which they need to be inserted
         replacement_items = {0: 'A' + selected_suit[0],
