@@ -35,7 +35,7 @@ class GameFunctionality():
         print(",".join(player_cards))
     
     @staticmethod
-    def print_outcome_of_game(self,player_cards, robot_cards, selected_suit, card_values, is_game_started):
+    def print_outcome_of_game(player_cards, robot_cards, selected_suit, card_values, is_game_started):
         game_rule = game_rules()
         game_result = game_rule.check_result(player_cards, robot_cards, selected_suit, card_values)
         
