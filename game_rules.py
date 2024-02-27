@@ -35,7 +35,7 @@ class game_rules:
         # Checking if any value in the dictionary is turned to true
         if any(game_result.values()):
             return game_result
-        print("Damn!! This rule did not give me a result too")
+        print("Damn!! This rule did not give me a result")
 
         print("\nChecking Rule 3.....")
         # Rule 3 - The player holds more cards from the suit in position 2 than the robot
