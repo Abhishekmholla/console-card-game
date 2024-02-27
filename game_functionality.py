@@ -49,4 +49,8 @@ class GameFunctionality():
                 print("\n\033[1mYippee!!! Congratulations you won.......\033[0m")
             else:
                 print("\n\033[1mHard luck mate.....you lost the game\033[0m")
+    
+    @staticmethod
+    def print_message(message):
+        print(message)
             
