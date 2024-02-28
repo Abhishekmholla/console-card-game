@@ -11,7 +11,7 @@ def play_game():
     values = {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
               '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13}
 
-    suits = {1: ["♥", "♦", "♣", "♠"], 2: ["😃", "😈", "😵", "🤢", ""], 
+    suits = {1: ["♥", "♦", "♣", "♠"], 2: ["😃", "😈", "😵", "🤢"], 
              3: ["🤡", "👹", "👺", "👻", "👽", "👾", "🤖"]}
 
     selected_suit = []
@@ -23,7 +23,7 @@ def play_game():
     print("Hello my fellow challenger!!\n"
           "Welcome to the CARD GAME")
     while len(player_cards) <= 6:
-
+        
         GameFunctionality.get_game_menu()
 
         if not is_game_started:
@@ -44,35 +44,30 @@ def play_game():
         if len(player_options) > 0 and not player_options[0].isdigit():
             GameFunctionality.print_message(
                 f"The input provided {player_options[0]} is invalid!!!")
-            # print(f"The input provided {player_options[0]} is invalid!!!")
             continue
 
         # If the player enters a non digit value for suit option, show error
         if len(player_options) > 1 and not player_options[1].isdigit():
             GameFunctionality.print_message(
                 f"The input provided {player_options[1]} is invalid!!!")
-            # print(f"The input provided {player_options[1]} is invalid!!!")
             continue
 
         # If the player doesn't give any options, show error
         if len(player_options) == 0:
             GameFunctionality.print_message(
                 f"The input provided is invalid. Please provide a valid input")
-            # print(f"The input provided is invalid. Please provide a valid input")
             continue
 
         # If the player chooses a value more than 6 for game options, show error
         if int(player_options[0]) > 6:
             GameFunctionality.print_message(
                 f"The input provided {player_options[0]} is invalid!!!")
-            # print(f"The input provided {player_options[0]} is invalid!!!")
             continue
 
         # If the player chooses a value more than 3 for suit options, show error
         if len(player_options) > 1 and int(player_options[1]) > 3:
             GameFunctionality.print_message(
                 f"The input provided {player_options[1]} is invalid. Please enter a value between 1 and 3")
-            # print(f"The input provided {player_options[1]} is invalid. Please enter a value between 1 and 3")
             continue
 
         if not is_game_started and int(player_options[0]) == 1:
@@ -91,7 +86,6 @@ def play_game():
             if not player_suit_option.isdigit():
                 GameFunctionality.print_message(
                     f"The input provided {player_suit_option} is invalid!!!")
-                # print(f"The input provided {player_suit_option} is invalid!!!")
                 is_game_started = False
                 continue
 
